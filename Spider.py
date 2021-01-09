@@ -5,7 +5,7 @@ import os
 import time
 
 
-
+options = webdriver.ChromeOptions()
 DriverPath=os.getcwd()
 browser= webdriver.Chrome(DriverPath+'/chromedriver')
 
@@ -54,7 +54,7 @@ class RankingClass():
         for i in range(1,self.ClassesRows+1):
             buttom = browser.find_element_by_xpath(
                 "/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr[" + str(i) + "]/td[8]/a")
-            if buttom.text == "modify the evaluation":
+            if buttom.text == "modify the evaluation" or "修改评估":
                 self.PageScoll(20)
                 continue
             else:
@@ -115,7 +115,7 @@ class RankingTeacher():
         for i in range(1,self.TeachersRows+1):
             buttom=browser.find_element_by_xpath("/html/body/div[3]"
                                                  "/div/div[3]/div[2]/table/tbody/tr["+str(i)+"]/td[8]/a")
-            if buttom.text =="modify the evaluation":
+            if buttom.text =="modify the evaluation" or "修改评估":
                 self.PageScoll(20)
                 continue
             else:
