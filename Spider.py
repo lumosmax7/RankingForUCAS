@@ -50,11 +50,14 @@ class RankingClass():
     def __init__(self):
         self.ClassesRows = len(browser.find_elements_by_xpath("/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr"))
 
+
+
     def IsEvalued(self):
         for i in range(1,self.ClassesRows+1):
             buttom = browser.find_element_by_xpath(
                 "/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr[" + str(i) + "]/td[8]/a")
-            if buttom.text == "modify the evaluation" or "修改评估":
+            print(buttom.text)
+            if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估"):
                 self.PageScoll(20)
                 continue
             else:
@@ -72,7 +75,7 @@ class RankingClass():
                 if i == 4:
                     browser.find_element_by_xpath(
                         "/html/body/div[3]/div/div[2]/div[2]/form/table/tbody/tr[" + str(i) + "]/td[4]/input").click()
-                self.PageScoll(20)
+                self.PageScoll(10)
             except NoSuchElementException:
                 continue
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[2]/textarea").click()
@@ -115,7 +118,7 @@ class RankingTeacher():
         for i in range(1,self.TeachersRows+1):
             buttom=browser.find_element_by_xpath("/html/body/div[3]"
                                                  "/div/div[3]/div[2]/table/tbody/tr["+str(i)+"]/td[8]/a")
-            if buttom.text =="modify the evaluation" or "修改评估":
+            if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估") :
                 self.PageScoll(20)
                 continue
             else:
