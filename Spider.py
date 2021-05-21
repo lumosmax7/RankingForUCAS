@@ -49,20 +49,21 @@ class RankingClass():
     def __init__(self):
         self.ClassesRows = len(browser.find_elements_by_xpath("/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr"))
 
-
-
     def IsEvalued(self):
         for i in range(1,self.ClassesRows+1):
-            buttom = browser.find_element_by_xpath(
-                "/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr[" + str(i) + "]/td[8]/a")
-            print(buttom.text)
-            if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估"):
-                self.PageScoll(20)
+            try:
+                buttom = browser.find_element_by_xpath(
+                    "/html/body/div[3]/div/div[3]/div[2]/table/tbody/tr[" + str(i) + "]/td[8]/a")
+                print(buttom.text)
+                if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估"):
+                    self.PageScoll(20)
+                    continue
+                else:
+                    buttom.click()
+                    self.EnterintoRanking()
+                    self.PageScoll(i*20)
+            except:
                 continue
-            else:
-                buttom.click()
-                self.EnterintoRanking()
-                self.PageScoll(i*20)
         print("all classes have been evauled!")
         browser.execute_script("window.scrollBy(0,-10000000)")
 
@@ -79,16 +80,16 @@ class RankingClass():
                 continue
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[2]/textarea").click()
         browser.switch_to.active_element.send_keys("老师的课堂互动很多, ppt内容翔实")
-        self.PageScoll(20)
+        self.PageScoll(30)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[4]/textarea").click()
         browser.switch_to.active_element.send_keys("增加更多的实例, 包括图片和视频")
-        self.PageScoll(20)
+        self.PageScoll(30)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[6]/textarea").click()
         browser.switch_to.active_element.send_keys("两个小时, 在下课之后, 温习功课")
-        self.PageScoll(20)
+        self.PageScoll(30)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[8]/textarea").click()
         browser.switch_to.active_element.send_keys("比较有兴趣, 想了解更多相关的知识 ")
-        self.PageScoll(20)
+        self.PageScoll(30)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[10]/textarea").click()
         browser.switch_to.active_element.send_keys("满出勤, 但是没有回答课堂上的问题")
         self.PageScoll(40)
@@ -98,6 +99,8 @@ class RankingClass():
         self.PageScoll(40)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[21]/input").click()
         self.PageScoll(40)
+        self.authcode = input("enter auth code:")
+        browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/input").send_keys(self.authcode)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/button").click()
         browser.find_element_by_xpath("/html/body/div[11]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]/button[1]").click()
 
@@ -139,6 +142,8 @@ class RankingTeacher():
         self.PageScoll(20)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/form/div[4]/textarea").click()
         browser.switch_to.active_element.send_keys("希望老师能够保持这种授课方式，让学生能学到更多")
+        self.authcode = input("enter auth code:")
+        browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/input").send_keys(self.authcode)
 
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/button").click()
         browser.find_element_by_xpath("/html/body/div[11]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]"
