@@ -18,18 +18,17 @@ class initial():
     def login(self):
         browser.get('http://sep.ucas.ac.cn/')
         time.sleep(2)
-        browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[1]/div/div"
-                                      "/input").send_keys(self.username)
-        browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[2]/div/div"
-                                      "/input").send_keys(self.password)
+        browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[1]/"
+                                      "div/div/div[1]/input").send_keys(self.username)
+        browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[1]/"
+                                      "div/div/div[2]/input").send_keys(self.password)
         try :
-            browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[3]/div/div/input")
+            browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[1]/div/div/div[3]/input")
             self.VerificationCode=input("enter the vertification code:")
-            browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[3]/div/div"
-                                          "/input").send_keys(self.VerificationCode)
-            browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[5]/button").click()
+            browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[1]/div/div/div[3]/input").send_keys(self.VerificationCode)
+            browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[3]/div/div/button").click()
         except NoSuchElementException:
-            browser.find_element_by_xpath("/html/body/div[2]/div/div/div[2]/div/form/div[4]/button").click()
+            browser.find_element_by_xpath("/html/body/div/section/div[2]/div/div[1]/div[1]/form/div[3]/div/div/button").click()
     def EnterIntoRanking(self):
         browser.find_element_by_xpath("/html/body/div[2]/ul/li[3]/a[3]/img").click()
         time.sleep(2)
