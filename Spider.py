@@ -118,15 +118,18 @@ class RankingTeacher():
 
     def IsEvalued(self):
         for i in range(1,self.TeachersRows+1):
-            buttom=browser.find_element_by_xpath("/html/body/div[3]"
-                                                 "/div/div[3]/div[2]/table/tbody/tr["+str(i)+"]/td[8]/a")
-            if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估") :
-                self.PageScoll(20)
+            try:
+                buttom=browser.find_element_by_xpath("/html/body/div[3]"
+                                                     "/div/div[3]/div[2]/table/tbody/tr["+str(i)+"]/td[8]/a")
+                if (buttom.text == "modify the evaluation")or (buttom.text == "修改评估") :
+                    self.PageScoll(20)
+                    continue
+                else:
+                    buttom.click()
+                    self.EnterintoRanking()
+                    self.PageScoll(i*20)
+            except:
                 continue
-            else:
-                buttom.click()
-                self.EnterintoRanking()
-                self.PageScoll(i*20)
         print("all teachers have been evalued!")
     def EnterintoRanking(self):
         for i in range(2,28):
@@ -144,8 +147,8 @@ class RankingTeacher():
         browser.switch_to.active_element.send_keys("希望老师能够保持这种授课方式，让学生能学到更多")
         self.authcode = input("enter auth code:")
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/input").send_keys(self.authcode)
+        browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/button").click()
 
-        browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/button").click()
         browser.find_element_by_xpath("/html/body/div[11]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]"
                                       "/button[1]").click()
 
