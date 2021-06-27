@@ -1,13 +1,19 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException,ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException
 
 import os
 import time
 
+## add chrome heere
+# DriverPath=os.getcwd()
+# browser= webdriver.Chrome(DriverPath+'/chromedriver')
 
-options = webdriver.ChromeOptions()
+
+## add  firefox here
 DriverPath=os.getcwd()
-browser= webdriver.Chrome(DriverPath+'/chromedriver')
+browser = webdriver.Firefox()
+
+
 
 class initial():
     def __init__(self):
@@ -102,7 +108,9 @@ class RankingClass():
         self.authcode = input("enter auth code:")
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/input").send_keys(self.authcode)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/div[2]/button").click()
-        browser.find_element_by_xpath("/html/body/div[11]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]/button[1]").click()
+        browser.find_element_by_xpath("/html/body/div[5]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]/button[1]").click()
+
+
 
 
     def PageScoll(self,num):
@@ -148,9 +156,8 @@ class RankingTeacher():
         self.authcode = input("enter auth code:")
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/input").send_keys(self.authcode)
         browser.find_element_by_xpath("/html/body/div[3]/div/div[2]/div[2]/button").click()
+        browser.find_element_by_xpath("/html/body/div[5]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]/button[1]").click()
 
-        browser.find_element_by_xpath("/html/body/div[11]/div[4]/table/tbody/tr[2]/td[2]/div/div[2]/div/div[2]"
-                                      "/button[1]").click()
 
     def PageScoll(self, num):
         for i in range(num):

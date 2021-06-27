@@ -1,14 +1,19 @@
 # A simple tool for evaluing classes and teacheres in UCAS
+**中国科学院大学自动评教**
 
 ## Requirements
-The tool is based on selenium, and it needs the version macthed chromedriver
-(assumed that your computer had already installed chrome).
-The repo had already put a chromedriver(ver87,mac-intel), if it didn't work, check the website:
-https://chromedriver.chromium.org/.
+The tool is based on selenium.
+
+And the tool also needs **Chromedriver(Chrome) or geckodriver(Firefox)**, please check how to install it .
 ## How to run
-make sure you have satisifying the requirements.\
+Uncomment the code according to your platform.
+
+Make sure you have satisifying the requirements.\
 open terminal and type `python spider.py`, follow the instructions.
-## About content
+
+Attention to the auth code, There are **SO MANY**.
+
+## Trick
 In `spider.py`, you can modify the content you want to fill in class `RankingClass`and `RankingTeacher`.
 
-#Now enjoy!
+# Now enjoy!
